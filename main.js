@@ -1,15 +1,17 @@
 let Phrase = require("learnenough-palindrome");
 
 function palindromeTester() {
-  let string = prompt("Please enter a palindrome!");
-  let phrase = new Phrase(string);
+  event.preventDefault();
+
+
+  let phrase = new Phrase(event.target.phrase.value);
   let palindromeResult = document.querySelector("#palindromeResult");
 
 
   if (phrase.palindrome()) {
     palindromeResult.innerHTML = `"<strong>${phrase.content}</strong>" is a palindrome!`;
   } else {
-    palindromeResult.innerHTML = `"${phrase.content}" is not a palindrome`;
+    palindromeResult.innerHTML = `"<strong>${phrase.content}</strong>" is not a palindrome`;
   }
 }
 
@@ -24,6 +26,6 @@ function palindromeTester() {
 document.addEventListener("DOMContentLoaded", function() {
   let button = document.querySelector("#palindromeTester");
   button.addEventListener("click", function() {
-    palindromeTester();
+    palindromeTester(event);
   });
 });
